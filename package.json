@@ -1,0 +1,46 @@
+{
+  "name": "workout-logger-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "@fortawesome/free-solid-svg-icons": "^5.12.1",
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "axios": "0.19.2",
+    "bootstrap": "^4.4.1",
+    "formik": "^2.1.4",
+    "lodash": "^4.17.15",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0",
+    "react-icons": "^3.10.0",
+    "react-loader-spinner": "^3.1.5",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.0",
+    "recharts": "^1.8.5",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "build-prd": "cross-env GENERATE_SOURCEMAP=false react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
