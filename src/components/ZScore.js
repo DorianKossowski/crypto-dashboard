@@ -1,7 +1,7 @@
-import AbstractChart from './AbstractChart';
+import LookIntoBitcoinChart from './LookIntoBitcoinChart';
 
 
-class ZScore extends AbstractChart {
+class ZScore extends LookIntoBitcoinChart {
 
     getChartName = () => 'MVRV Z-Score';
 

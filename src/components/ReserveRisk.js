@@ -1,6 +1,6 @@
-import AbstractChart from './AbstractChart'
+import LookIntoBitcoinChart from './LookIntoBitcoinChart'
 
-class ReserveRisk extends AbstractChart {
+class ReserveRisk extends LookIntoBitcoinChart {
 
       getChartName = () => 'Reserve Risk';
 
