@@ -6,12 +6,15 @@ import OvalLoader from './helpers/OvalLoader';
 import ErrorAlert from './helpers/ErrorAlert';
 import handleError from '../helpers/ErrorHandlingService';
 
+import Alarms from './Alarms';
+
 class LookIntoBitcoinChart extends Component {
 
       state = {
           chartData : null,
           bitcoinData : null,
-          loading: false,
+          loading1: false,
+          loading2: false,
           errMsg: ''
       }
 
@@ -20,27 +23,26 @@ class LookIntoBitcoinChart extends Component {
       }
 
       getChartData = () => {
-          this.setState({ loading: true });
-          this.setState({ errMsg: '' });
+          this.setState({ loading1: true, loading2: true, errMsg: '' });
           api({
               method: 'GET',
               url: '/charts/' + this.getChartUrl()
           })
           .then(data => this.setState({ chartData: data }))
           .catch(error => this.setState({ errMsg: handleError(error, 'Error during getting chart data: ') }))
-          .finally(() => this.setState({ loading: false }));
+          .finally(() => this.setState({ loading1: false }));
           api({
               method: 'GET',
               url: '/charts/bitcoin'
           })
           .then(data => this.setState({ bitcoinData: data }))
           .catch(error => this.setState({ errMsg: handleError(error, 'Error during getting chart data: ') }))
-          .finally(() => this.setState({ loading: false }));
+          .finally(() => this.setState({ loading2: false }));
       }
 
       getChartRender = () => {
           if (this.state.chartData === null || this.state.bitcoinData === null) {
-            return (<OvalLoader/>)
+            return (<></>)
           }
           const {dates, values} = this.state.chartData
           const bitcoin = this.state.bitcoinData.values
@@ -74,7 +76,8 @@ class LookIntoBitcoinChart extends Component {
               <div>
                   <ErrorAlert msg={this.state.errMsg}/>
                   <h1>{this.getChartName()}</h1>
-                  {this.state.loading ? <OvalLoader/> : this.getChartRender()}
+                  {this.state.loading1 || this.state.loading2 ? <OvalLoader/> : this.getChartRender()}
+                  <Alarms chartType={this.getChartUrl()}/>
               </div>
           );
       }
